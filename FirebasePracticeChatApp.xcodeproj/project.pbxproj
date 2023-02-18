@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F629A0957F0013C02D /* AppDelegate.swift */; };
 		9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F829A0957F0013C02D /* SceneDelegate.swift */; };
-		9B9355FB29A0957F0013C02D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355FA29A0957F0013C02D /* ViewController.swift */; };
 		9B9355FE29A0957F0013C02D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B9355FC29A0957F0013C02D /* Main.storyboard */; };
 		9B93560029A095880013C02D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B9355FF29A095880013C02D /* Assets.xcassets */; };
 		9B93560329A095880013C02D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B93560129A095880013C02D /* LaunchScreen.storyboard */; };
@@ -17,17 +16,30 @@
 		9B93561129A09B0E0013C02D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9B93561029A09B0E0013C02D /* FirebaseFirestore */; };
 		9B93561329A09B0E0013C02D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9B93561229A09B0E0013C02D /* FirebaseFirestoreSwift */; };
 		9B93561529A09B0E0013C02D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9B93561429A09B0E0013C02D /* FirebaseStorage */; };
+		9B93561729A0AB590013C02D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B93561629A0AB590013C02D /* GoogleService-Info.plist */; };
+		9B93561D29A0B1D10013C02D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93561C29A0B1D10013C02D /* HomeViewController.swift */; };
+		9B93561F29A0B1F80013C02D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93561E29A0B1F80013C02D /* RegisterViewController.swift */; };
+		9B93562129A0B2040013C02D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562029A0B2040013C02D /* LoginViewController.swift */; };
+		9B93562329A0B2220013C02D /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562229A0B2220013C02D /* ChatTableViewController.swift */; };
+		9B93562529A0C4840013C02D /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562429A0C4830013C02D /* TalkViewController.swift */; };
+		9B93562829A0CCCB0013C02D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562729A0CCCB0013C02D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9B9355F329A0957F0013C02D /* FirebasePracticeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePracticeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9355F629A0957F0013C02D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B9355F829A0957F0013C02D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9B9355FA29A0957F0013C02D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B9355FD29A0957F0013C02D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B9355FF29A095880013C02D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B93560229A095880013C02D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B93560429A095880013C02D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B93561629A0AB590013C02D /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9B93561C29A0B1D10013C02D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		9B93561E29A0B1F80013C02D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		9B93562029A0B2040013C02D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9B93562229A0B2220013C02D /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		9B93562429A0C4830013C02D /* TalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
+		9B93562729A0CCCB0013C02D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,15 +76,61 @@
 		9B9355F529A0957F0013C02D /* FirebasePracticeChatApp */ = {
 			isa = PBXGroup;
 			children = (
-				9B9355F629A0957F0013C02D /* AppDelegate.swift */,
-				9B9355F829A0957F0013C02D /* SceneDelegate.swift */,
-				9B9355FA29A0957F0013C02D /* ViewController.swift */,
-				9B9355FC29A0957F0013C02D /* Main.storyboard */,
+				9B93562629A0CCB30013C02D /* Setting */,
+				9B93561829A0B1530013C02D /* Application */,
+				9B93561B29A0B1910013C02D /* Model */,
+				9B93561A29A0B1770013C02D /* View */,
+				9B93561929A0B1660013C02D /* Controller */,
 				9B9355FF29A095880013C02D /* Assets.xcassets */,
 				9B93560129A095880013C02D /* LaunchScreen.storyboard */,
+				9B93561629A0AB590013C02D /* GoogleService-Info.plist */,
 				9B93560429A095880013C02D /* Info.plist */,
 			);
 			path = FirebasePracticeChatApp;
+			sourceTree = "<group>";
+		};
+		9B93561829A0B1530013C02D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				9B9355F629A0957F0013C02D /* AppDelegate.swift */,
+				9B9355F829A0957F0013C02D /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		9B93561929A0B1660013C02D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9B93561C29A0B1D10013C02D /* HomeViewController.swift */,
+				9B93561E29A0B1F80013C02D /* RegisterViewController.swift */,
+				9B93562029A0B2040013C02D /* LoginViewController.swift */,
+				9B93562229A0B2220013C02D /* ChatTableViewController.swift */,
+				9B93562429A0C4830013C02D /* TalkViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9B93561A29A0B1770013C02D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B9355FC29A0957F0013C02D /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B93561B29A0B1910013C02D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B93562629A0CCB30013C02D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				9B93562729A0CCCB0013C02D /* Constants.swift */,
+			);
+			path = Setting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B93561729A0AB590013C02D /* GoogleService-Info.plist in Resources */,
 				9B93560329A095880013C02D /* LaunchScreen.storyboard in Resources */,
 				9B93560029A095880013C02D /* Assets.xcassets in Resources */,
 				9B9355FE29A0957F0013C02D /* Main.storyboard in Resources */,
@@ -155,9 +214,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B9355FB29A0957F0013C02D /* ViewController.swift in Sources */,
 				9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */,
 				9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */,
+				9B93561D29A0B1D10013C02D /* HomeViewController.swift in Sources */,
+				9B93562529A0C4840013C02D /* TalkViewController.swift in Sources */,
+				9B93562129A0B2040013C02D /* LoginViewController.swift in Sources */,
+				9B93561F29A0B1F80013C02D /* RegisterViewController.swift in Sources */,
+				9B93562329A0B2220013C02D /* ChatTableViewController.swift in Sources */,
+				9B93562829A0CCCB0013C02D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
