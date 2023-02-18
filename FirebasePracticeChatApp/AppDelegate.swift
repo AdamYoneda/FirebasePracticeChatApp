@@ -18,9 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        // Cloud Firestore・Cloud Storageの初期化
         FirebaseApp.configure()
         let db = Firestore.firestore()
+        // デフォルトのFirebaseAppを仕様してStorageサービスへの参照を取得
         let storage = Storage.storage()
+        // StorageサービスからのStorageへの参照を作成
+        let storageRef = storage.reference()
         
         return true
     }
