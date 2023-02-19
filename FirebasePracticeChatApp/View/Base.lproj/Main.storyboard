@@ -236,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="2322.9007633587785" y="-374.64788732394368"/>
         </scene>
-        <!--Chat Room-->
+        <!--ChatList Table View Controller-->
         <scene sceneID="Ymd-eV-z6D">
             <objects>
-                <tableViewController id="zMd-Ed-tXT" customClass="ChatTableViewController" customModule="FirebasePracticeChatApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="zMd-Ed-tXT" userLabel="ChatList Table View Controller" customClass="ChatListTableViewController" customModule="FirebasePracticeChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="TiQ-rd-Wty">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,8 +259,15 @@
                             <outlet property="delegate" destination="zMd-Ed-tXT" id="pEj-iV-ra5"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Chat Room" id="UHm-Fy-Zkb"/>
+                    <navigationItem key="navigationItem" title="Chat Room" id="UHm-Fy-Zkb">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nh9-o0-UHr">
+                            <connections>
+                                <action selector="addPressed:" destination="zMd-Ed-tXT" id="5Hg-0v-zm2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="TiQ-rd-Wty" id="Fhi-O7-GIq"/>
                         <segue destination="MCO-mV-UTI" kind="show" identifier="ChatRoomToTalk" id="Dcy-NS-gCT"/>
                     </connections>
                 </tableViewController>
@@ -276,15 +283,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jON-Md-eqi">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="jON-Md-eqi">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TalkCell" id="qus-QY-AaC">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qus-QY-AaC" id="UlB-Cd-eHO">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

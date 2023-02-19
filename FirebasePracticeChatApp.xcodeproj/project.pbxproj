@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B7F201729A1ECAF00B9E353 /* TalkCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */; };
+		9B7F201829A1ECAF00B9E353 /* TalkCell_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */; };
 		9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F629A0957F0013C02D /* AppDelegate.swift */; };
 		9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F829A0957F0013C02D /* SceneDelegate.swift */; };
 		9B9355FE29A0957F0013C02D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B9355FC29A0957F0013C02D /* Main.storyboard */; };
@@ -20,12 +22,18 @@
 		9B93561D29A0B1D10013C02D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93561C29A0B1D10013C02D /* HomeViewController.swift */; };
 		9B93561F29A0B1F80013C02D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93561E29A0B1F80013C02D /* RegisterViewController.swift */; };
 		9B93562129A0B2040013C02D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562029A0B2040013C02D /* LoginViewController.swift */; };
-		9B93562329A0B2220013C02D /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562229A0B2220013C02D /* ChatTableViewController.swift */; };
+		9B93562329A0B2220013C02D /* ChatListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562229A0B2220013C02D /* ChatListTableViewController.swift */; };
 		9B93562529A0C4840013C02D /* TalkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562429A0C4830013C02D /* TalkViewController.swift */; };
 		9B93562829A0CCCB0013C02D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562729A0CCCB0013C02D /* Constants.swift */; };
+		9B93563129A100BA0013C02D /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562F29A100BA0013C02D /* ChatListCell.swift */; };
+		9B93563229A100BA0013C02D /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563029A100BA0013C02D /* ChatListCell.xib */; };
+		9B93563529A100E00013C02D /* TalkCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93563329A100E00013C02D /* TalkCell_1.swift */; };
+		9B93563629A100E00013C02D /* TalkCell_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563429A100E00013C02D /* TalkCell_1.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell_2.swift; sourceTree = "<group>"; };
+		9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell_2.xib; sourceTree = "<group>"; };
 		9B9355F329A0957F0013C02D /* FirebasePracticeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePracticeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9355F629A0957F0013C02D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B9355F829A0957F0013C02D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +45,13 @@
 		9B93561C29A0B1D10013C02D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9B93561E29A0B1F80013C02D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		9B93562029A0B2040013C02D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9B93562229A0B2220013C02D /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		9B93562229A0B2220013C02D /* ChatListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewController.swift; sourceTree = "<group>"; };
 		9B93562429A0C4830013C02D /* TalkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkViewController.swift; sourceTree = "<group>"; };
 		9B93562729A0CCCB0013C02D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9B93562F29A100BA0013C02D /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		9B93563029A100BA0013C02D /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
+		9B93563329A100E00013C02D /* TalkCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell_1.swift; sourceTree = "<group>"; };
+		9B93563429A100E00013C02D /* TalkCell_1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell_1.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +116,7 @@
 				9B93561C29A0B1D10013C02D /* HomeViewController.swift */,
 				9B93561E29A0B1F80013C02D /* RegisterViewController.swift */,
 				9B93562029A0B2040013C02D /* LoginViewController.swift */,
-				9B93562229A0B2220013C02D /* ChatTableViewController.swift */,
+				9B93562229A0B2220013C02D /* ChatListTableViewController.swift */,
 				9B93562429A0C4830013C02D /* TalkViewController.swift */,
 			);
 			path = Controller;
@@ -114,6 +126,12 @@
 			isa = PBXGroup;
 			children = (
 				9B9355FC29A0957F0013C02D /* Main.storyboard */,
+				9B93562F29A100BA0013C02D /* ChatListCell.swift */,
+				9B93563029A100BA0013C02D /* ChatListCell.xib */,
+				9B93563329A100E00013C02D /* TalkCell_1.swift */,
+				9B93563429A100E00013C02D /* TalkCell_1.xib */,
+				9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */,
+				9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,8 +218,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B7F201829A1ECAF00B9E353 /* TalkCell_2.xib in Resources */,
 				9B93561729A0AB590013C02D /* GoogleService-Info.plist in Resources */,
+				9B93563629A100E00013C02D /* TalkCell_1.xib in Resources */,
 				9B93560329A095880013C02D /* LaunchScreen.storyboard in Resources */,
+				9B93563229A100BA0013C02D /* ChatListCell.xib in Resources */,
 				9B93560029A095880013C02D /* Assets.xcassets in Resources */,
 				9B9355FE29A0957F0013C02D /* Main.storyboard in Resources */,
 			);
@@ -217,11 +238,14 @@
 				9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */,
 				9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */,
 				9B93561D29A0B1D10013C02D /* HomeViewController.swift in Sources */,
+				9B93563129A100BA0013C02D /* ChatListCell.swift in Sources */,
 				9B93562529A0C4840013C02D /* TalkViewController.swift in Sources */,
 				9B93562129A0B2040013C02D /* LoginViewController.swift in Sources */,
 				9B93561F29A0B1F80013C02D /* RegisterViewController.swift in Sources */,
-				9B93562329A0B2220013C02D /* ChatTableViewController.swift in Sources */,
+				9B93562329A0B2220013C02D /* ChatListTableViewController.swift in Sources */,
+				9B7F201729A1ECAF00B9E353 /* TalkCell_2.swift in Sources */,
 				9B93562829A0CCCB0013C02D /* Constants.swift in Sources */,
+				9B93563529A100E00013C02D /* TalkCell_1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
