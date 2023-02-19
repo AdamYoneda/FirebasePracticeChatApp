@@ -29,6 +29,9 @@ class TalkViewController: UIViewController {
         
     }
     
+    @IBAction func tapScreen(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
 }
 
 extension TalkViewController: UITableViewDelegate, UITableViewDataSource {
@@ -48,5 +51,21 @@ extension TalkViewController: UITableViewDelegate, UITableViewDataSource {
         return talkCell
     }
     
+}
+
+//MARK: - UITextFieldDelegate
+
+extension TalkViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        } else {
+            return false
+        }
+    }
 }

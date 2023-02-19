@@ -39,6 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         appearance.tintColor = UIColor.white
         
+        // ------------ UITextFieldの設定 ----------------
+        let textField = UITextField()
+        textField.autocapitalizationType = .words
+        textField.returnKeyType = .go
+        
         return true
     }
     //MARK: - Configure NavBarAppearance

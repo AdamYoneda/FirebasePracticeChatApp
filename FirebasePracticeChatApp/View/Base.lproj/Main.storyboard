@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="17G-ck-8GE">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -24,7 +25,7 @@
                                 </constraints>
                                 <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Register"/>
                                 <connections>
                                     <segue destination="P6Z-jZ-pWE" kind="show" id="yYo-QG-VUj"/>
                                 </connections>
@@ -37,7 +38,7 @@
                                 </constraints>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Login"/>
                                 <connections>
                                     <segue destination="Trg-eE-Ojg" kind="show" id="hUS-09-apl"/>
                                 </connections>
@@ -100,6 +101,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Wn-R3-Cp1"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Ybb-CT-ons" firstAttribute="top" secondItem="2Wn-R3-Cp1" secondAttribute="top" constant="43" id="7t4-Kf-e22"/>
                             <constraint firstItem="nTZ-Q9-ljk" firstAttribute="centerX" secondItem="qIa-7D-AR3" secondAttribute="centerX" id="JeL-MW-OCn"/>
@@ -108,6 +110,9 @@
                             <constraint firstItem="Ybb-CT-ons" firstAttribute="centerX" secondItem="qIa-7D-AR3" secondAttribute="centerX" id="kJb-bd-xgk"/>
                             <constraint firstItem="nTZ-Q9-ljk" firstAttribute="top" secondItem="zyP-55-w4P" secondAttribute="bottom" constant="30" id="qB5-iS-7Zj"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Kg2-Tj-cnZ" appends="YES" id="SNn-Dp-e0d"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="BDL-0C-MCC"/>
                     <connections>
@@ -117,6 +122,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rjy-Jt-MHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Kg2-Tj-cnZ">
+                    <connections>
+                        <action selector="tapScreen:" destination="Trg-eE-Ojg" id="VMS-FD-7zM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2324" y="539"/>
         </scene>
@@ -179,8 +189,9 @@
                                             <constraint firstAttribute="height" constant="20" id="8ao-TM-TqW"/>
                                             <constraint firstAttribute="width" constant="20" id="i2K-lO-Ekb"/>
                                         </constraints>
+                                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="photo.fill" catalog="system"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="camera.fill" catalog="system"/>
                                         <connections>
                                             <action selector="addImage:" destination="P6Z-jZ-pWE" eventType="touchUpInside" id="fGJ-GN-a0M"/>
                                         </connections>
@@ -206,10 +217,16 @@
                                     <constraint firstAttribute="bottom" secondItem="41a-vu-05h" secondAttribute="bottom" id="io4-2Z-FO7"/>
                                     <constraint firstItem="lqr-N9-tDR" firstAttribute="leading" secondItem="NqS-8M-Vx6" secondAttribute="leading" id="uYS-m3-XhP"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Pbf-fk-8EA"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="NqS-8M-Vx6" firstAttribute="centerX" secondItem="OAh-7L-FM7" secondAttribute="centerX" id="4Pn-N8-4Zh"/>
                             <constraint firstItem="x1z-Y6-h3B" firstAttribute="top" secondItem="aKY-5C-gWY" secondAttribute="bottom" constant="40" id="F12-Fl-bwh"/>
@@ -222,17 +239,25 @@
                             <constraint firstItem="aKY-5C-gWY" firstAttribute="top" secondItem="aVN-yN-Ztm" secondAttribute="bottom" constant="30" id="q8i-1s-F51"/>
                             <constraint firstItem="x1z-Y6-h3B" firstAttribute="centerX" secondItem="OAh-7L-FM7" secondAttribute="centerX" id="tVK-bo-Dwe"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ItD-lZ-Unx" appends="YES" id="CYY-LI-j0p"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="Krc-Lm-wRU"/>
                     <connections>
-                        <outlet property="email" destination="aVN-yN-Ztm" id="vXO-0U-8rh"/>
-                        <outlet property="iconImage" destination="lqr-N9-tDR" id="0RE-ec-VWq"/>
-                        <outlet property="password" destination="aKY-5C-gWY" id="JKk-qu-0fM"/>
-                        <outlet property="username" destination="0pE-H4-nrL" id="t7R-8b-3jE"/>
+                        <outlet property="email" destination="aVN-yN-Ztm" id="1oW-IN-766"/>
+                        <outlet property="iconImage" destination="lqr-N9-tDR" id="etU-fj-x3L"/>
+                        <outlet property="password" destination="aKY-5C-gWY" id="Imm-dE-j8J"/>
+                        <outlet property="username" destination="0pE-H4-nrL" id="AoB-Vv-Eeh"/>
                         <segue destination="zMd-Ed-tXT" kind="show" identifier="RegisterToChatRoom" id="jaY-px-mue"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx2-Wn-F4m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ItD-lZ-Unx">
+                    <connections>
+                        <action selector="tapScreen:" destination="P6Z-jZ-pWE" id="rMq-cp-TQD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2322.9007633587785" y="-374.64788732394368"/>
         </scene>
@@ -339,6 +364,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="enq-KB-Oo3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="53N-ux-bCv" secondAttribute="bottom" id="HH4-Ah-AKN"/>
                             <constraint firstItem="jON-Md-eqi" firstAttribute="bottom" secondItem="enq-KB-Oo3" secondAttribute="bottom" id="L8c-cB-PBF"/>
@@ -348,6 +374,9 @@
                             <constraint firstItem="53N-ux-bCv" firstAttribute="leading" secondItem="enq-KB-Oo3" secondAttribute="leading" id="oSW-be-zAo"/>
                             <constraint firstItem="jON-Md-eqi" firstAttribute="trailing" secondItem="enq-KB-Oo3" secondAttribute="trailing" id="rb4-3E-PfJ"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="tdY-LX-zFg" appends="YES" id="8ih-Ol-xCs"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="XIT-x3-NUu"/>
                     <connections>
@@ -356,6 +385,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NfE-Pn-HKv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="tdY-LX-zFg">
+                    <connections>
+                        <action selector="tapScreen:" destination="MCO-mV-UTI" id="R49-cx-qN1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="4771.7557251908393" y="-27.464788732394368"/>
         </scene>
@@ -383,8 +417,8 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="photo.artframe" catalog="system" width="128" height="93"/>
-        <image name="photo.fill" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
