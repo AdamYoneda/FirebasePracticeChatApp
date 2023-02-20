@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
@@ -19,7 +20,17 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction private func loginPressed(_ sender: UIButton) {
+        guard let email = email.text else { return }
+        guard let password = password.text else { return }
         
+        Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+          guard let strongSelf = self else { return }
+            if let e = error {
+                print("Login failed: \(e)")
+            } else {
+                self?.performSegue(withIdentifier: K.SegueIdentifier.loginToChat, sender: strongSelf)
+            }
+        }
     }
     
     @IBAction private func tapScreen(_ sender: UITapGestureRecognizer) {

@@ -49,7 +49,10 @@ class RegisterViewController: UIViewController {
     //MARK: - Upload User Info to Firestore/Storage
     
     @IBAction private func registerPressed(_ sender: UIButton) {
+        // Storageへの画像ファイルのアップロード、Authでのユーザー新規登録、Firestoreへのユーザー新規の保存
         uploadImageToStorage()
+        // ChatListTableVCへの画面遷移
+        self.performSegue(withIdentifier: K.SegueIdentifier.registerToChat, sender: self)
     }
     
     private func createUser(iconImageURL: String) {
