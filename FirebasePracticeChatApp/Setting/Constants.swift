@@ -26,5 +26,19 @@ struct K {
         
     }
     
+    struct FStore {
+        static let collectionName_Users = "users"
+        
+        struct UserInfo {
+            static let email = "email"
+            static let username = "username"
+            static let createdTime = "createdAt"
+            static let iconImageURL = "iconImageURLinStorage"
+        }
+    }
+    
+    struct Storage {
+        static let iconImage = "icon_image"
+    }
     
 }
