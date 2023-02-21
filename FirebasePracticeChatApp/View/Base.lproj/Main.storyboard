@@ -67,7 +67,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ybb-CT-ons">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="user01@ab.com" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ybb-CT-ons">
                                 <rect key="frame" x="46.666666666666657" y="146" width="300" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="n9E-he-R2S"/>
@@ -405,7 +405,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jaY-px-mue"/>
+        <segue reference="cxt-Lg-GhQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>

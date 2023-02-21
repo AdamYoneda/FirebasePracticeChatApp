@@ -10,6 +10,7 @@
 		9B7F201729A1ECAF00B9E353 /* TalkCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */; };
 		9B7F201829A1ECAF00B9E353 /* TalkCell_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */; };
 		9B7F201A29A3661000B9E353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F201929A3661000B9E353 /* GoogleService-Info.plist */; };
+		9B7F201C29A4CA1600B9E353 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201B29A4CA1500B9E353 /* User.swift */; };
 		9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F629A0957F0013C02D /* AppDelegate.swift */; };
 		9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F829A0957F0013C02D /* SceneDelegate.swift */; };
 		9B9355FE29A0957F0013C02D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B9355FC29A0957F0013C02D /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell_2.swift; sourceTree = "<group>"; };
 		9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell_2.xib; sourceTree = "<group>"; };
 		9B7F201929A3661000B9E353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		9B7F201B29A4CA1500B9E353 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9B9355F329A0957F0013C02D /* FirebasePracticeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePracticeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9355F629A0957F0013C02D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B9355F829A0957F0013C02D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		9B93561B29A0B1910013C02D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9B7F201B29A4CA1500B9E353 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				9B93562129A0B2040013C02D /* LoginViewController.swift in Sources */,
 				9B93561F29A0B1F80013C02D /* RegisterViewController.swift in Sources */,
 				9B93562329A0B2220013C02D /* ChatListTableViewController.swift in Sources */,
+				9B7F201C29A4CA1600B9E353 /* User.swift in Sources */,
 				9B7F201729A1ECAF00B9E353 /* TalkCell_2.swift in Sources */,
 				9B93562829A0CCCB0013C02D /* Constants.swift in Sources */,
 				9B93563529A100E00013C02D /* TalkCell_1.swift in Sources */,

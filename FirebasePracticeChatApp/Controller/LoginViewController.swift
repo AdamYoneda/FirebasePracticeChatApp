@@ -26,8 +26,9 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
           guard let strongSelf = self else { return }
             if let e = error {
-                print("Login failed: \(e)")
+                print("Auth Login failed: \(e)")
             } else {
+                print("Auth Login succeeded")
                 self?.performSegue(withIdentifier: K.SegueIdentifier.loginToChat, sender: strongSelf)
             }
         }

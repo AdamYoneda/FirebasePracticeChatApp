@@ -8,6 +8,17 @@
 import UIKit
 
 class ChatListCell: UITableViewCell {
+    
+    var user: User? {
+        didSet {
+            if let user = user {
+                //            userIconImage.image =
+                latestMessage.text = user.email // 仮
+                userName.text = user.username
+                time.text = dateFormatterForDateLabel(date: (user.createdAt.dateValue()))
+            }
+        }
+    }
 
     @IBOutlet weak var userIconImage: UIImageView!
     @IBOutlet weak var latestMessage: UILabel!
@@ -23,6 +34,14 @@ class ChatListCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    private func dateFormatterForDateLabel(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "ja_JP")
+        return formatter.string(from: date)
     }
     
 }
