@@ -294,8 +294,22 @@
                             <constraint firstItem="ljh-sR-jMn" firstAttribute="top" secondItem="Ubh-4O-TfR" secondAttribute="top" id="eL7-f1-R3F"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="l3a-De-2NL"/>
+                    <navigationItem key="navigationItem" id="l3a-De-2NL">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="YVo-Oi-YQT">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Edb-g5-YdJ">
+                                <rect key="frame" x="282.66666666666669" y="10.666666666666664" width="94.333333333333314" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Friend">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addFriendButton" destination="Edb-g5-YdJ" id="Ivh-nP-uX7"/>
                         <outlet property="userListTableView" destination="ljh-sR-jMn" id="NLF-Wl-VGp"/>
                     </connections>
                 </viewController>

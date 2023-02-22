@@ -15,22 +15,22 @@ class UserListViewController: UIViewController {
     var users: [User] = []
 
     @IBOutlet weak var userListTableView: UITableView!
+    @IBOutlet weak var addFriendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        setUpViews()
+        fetchInfoFromFirestore()
+    }
+    
+    private func setUpViews() {
         userListTableView.delegate = self
         userListTableView.dataSource = self
         
+        addFriendButton.layer.cornerRadius = 15
         userListTableView.register(UINib(nibName: K.Xib.userListCell, bundle: nil), forCellReuseIdentifier: K.CellID.userListCell)
         navigationItem.title = "User List"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        fetchInfoFromFirestore()
     }
     
     // Firestoreからドキュメントを取得
@@ -46,13 +46,19 @@ class UserListViewController: UIViewController {
                 guard let snapshotDoc = querySnapshot?.documents else { return }
                 for doc in snapshotDoc {
                     let user = User.init(dictionary: doc.data())
-                    self.users.append(user)
-                    self.userListTableView.reloadData()
+                    // currentUserの情報を表示しないようにする
+                    guard let uid = Auth.auth().currentUser?.uid else { return }    // ログイン中のユーザーのUUIDを取得
+                    if uid != doc.documentID {  // Firestoreのドキュメント'users'に割り振られたUUIDが.documentIDに該当する
+                        self.users.append(user)
+                    }
+        
+                    DispatchQueue.main.async {
+                        self.userListTableView.reloadData()
+                    }
                 }
             }
         }
     }
-
 }
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
