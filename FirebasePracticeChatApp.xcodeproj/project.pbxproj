@@ -33,6 +33,7 @@
 		9B93563229A100BA0013C02D /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563029A100BA0013C02D /* ChatListCell.xib */; };
 		9B93563529A100E00013C02D /* TalkCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93563329A100E00013C02D /* TalkCell_1.swift */; };
 		9B93563629A100E00013C02D /* TalkCell_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563429A100E00013C02D /* TalkCell_1.xib */; };
+		9BAE63A929A693CE00084375 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 9BAE63A829A693CE00084375 /* Nuke */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 				9B93561529A09B0E0013C02D /* FirebaseStorage in Frameworks */,
 				9B93561129A09B0E0013C02D /* FirebaseFirestore in Frameworks */,
 				9B93561329A09B0E0013C02D /* FirebaseFirestoreSwift in Frameworks */,
+				9BAE63A929A693CE00084375 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +194,7 @@
 				9B93561029A09B0E0013C02D /* FirebaseFirestore */,
 				9B93561229A09B0E0013C02D /* FirebaseFirestoreSwift */,
 				9B93561429A09B0E0013C02D /* FirebaseStorage */,
+				9BAE63A829A693CE00084375 /* Nuke */,
 			);
 			productName = FirebasePracticeChatApp;
 			productReference = 9B9355F329A0957F0013C02D /* FirebasePracticeChatApp.app */;
@@ -223,6 +226,7 @@
 			mainGroup = 9B9355EA29A0957F0013C02D;
 			packageReferences = (
 				9B93560D29A09B0D0013C02D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9BAE63A729A693CD00084375 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = 9B9355F429A0957F0013C02D /* Products */;
 			projectDirPath = "";
@@ -499,6 +503,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		9BAE63A729A693CD00084375 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -521,6 +533,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9B93560D29A09B0D0013C02D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		9BAE63A829A693CE00084375 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9BAE63A729A693CD00084375 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

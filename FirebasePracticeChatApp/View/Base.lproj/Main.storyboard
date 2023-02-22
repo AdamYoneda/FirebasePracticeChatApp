@@ -295,6 +295,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l3a-De-2NL"/>
+                    <connections>
+                        <outlet property="userListTableView" destination="ljh-sR-jMn" id="NLF-Wl-VGp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXh-Yo-sZd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -324,16 +327,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Chat Room" id="UHm-Fy-Zkb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nh9-o0-UHr">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="nh9-o0-UHr">
                             <connections>
                                 <action selector="addPressed:" destination="zMd-Ed-tXT" id="5Hg-0v-zm2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="rightBarButtonItem" destination="nh9-o0-UHr" id="osX-2g-zR9"/>
                         <outlet property="tableView" destination="TiQ-rd-Wty" id="Fhi-O7-GIq"/>
                         <segue destination="MCO-mV-UTI" kind="show" identifier="ChatRoomToTalk" id="Dcy-NS-gCT"/>
-                        <segue destination="Oe3-Ax-c5i" kind="presentation" id="wy9-YG-wCi"/>
+                        <segue destination="Oe3-Ax-c5i" kind="presentation" identifier="ChatListToUserList" id="wy9-YG-wCi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzb-hu-SfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -462,7 +466,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cxt-Lg-GhQ"/>
+        <segue reference="jaY-px-mue"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowtriangle.right.fill" catalog="system" width="128" height="113"/>

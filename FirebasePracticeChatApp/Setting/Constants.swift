@@ -19,6 +19,7 @@ struct K {
         static let registerToChat: String = "RegisterToChatRoom"
         static let loginToChat: String = "LoginToChatRoom"
         static let chatToTalk: String = "ChatRoomToTalk"
+        static let chatListToUserList = "ChatListToUserList"
     }
     
     struct Xib {
