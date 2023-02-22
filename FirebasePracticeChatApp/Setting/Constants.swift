@@ -12,6 +12,7 @@ struct K {
     struct CellID {
         static let chatCell: String = "ChatCell"
         static let talkCell: String = "TalkCell"
+        static let userListCell: String = "UserListCell"
     }
     
     struct SegueIdentifier {
@@ -23,7 +24,7 @@ struct K {
     struct Xib {
         static let chatlistCell: String = "ChatListCell"
         static let talkCell_1 = "MessageCell_1"
-        
+        static let userListCell = "UserListCell"
     }
     
     struct FStore {

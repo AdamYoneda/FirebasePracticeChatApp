@@ -50,7 +50,7 @@ class ChatListTableViewController: UITableViewController {
     
     
     //MARK: - IBAction
-
+    // UerListTableVCへの画面遷移 modal
     @IBAction func addPressed(_ sender: UIBarButtonItem) {
         
     }

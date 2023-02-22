@@ -11,6 +11,9 @@
 		9B7F201829A1ECAF00B9E353 /* TalkCell_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */; };
 		9B7F201A29A3661000B9E353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F201929A3661000B9E353 /* GoogleService-Info.plist */; };
 		9B7F201C29A4CA1600B9E353 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201B29A4CA1500B9E353 /* User.swift */; };
+		9B7F202029A5D9AD00B9E353 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201F29A5D9AD00B9E353 /* UserListViewController.swift */; };
+		9B7F202329A5E09400B9E353 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F202129A5E09300B9E353 /* UserListCell.swift */; };
+		9B7F202429A5E09500B9E353 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F202229A5E09300B9E353 /* UserListCell.xib */; };
 		9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F629A0957F0013C02D /* AppDelegate.swift */; };
 		9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9355F829A0957F0013C02D /* SceneDelegate.swift */; };
 		9B9355FE29A0957F0013C02D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B9355FC29A0957F0013C02D /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 		9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell_2.xib; sourceTree = "<group>"; };
 		9B7F201929A3661000B9E353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9B7F201B29A4CA1500B9E353 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		9B7F201F29A5D9AD00B9E353 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		9B7F202129A5E09300B9E353 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
+		9B7F202229A5E09300B9E353 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		9B9355F329A0957F0013C02D /* FirebasePracticeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebasePracticeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9355F629A0957F0013C02D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B9355F829A0957F0013C02D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +126,7 @@
 				9B93562029A0B2040013C02D /* LoginViewController.swift */,
 				9B93562229A0B2220013C02D /* ChatListTableViewController.swift */,
 				9B93562429A0C4830013C02D /* TalkViewController.swift */,
+				9B7F201F29A5D9AD00B9E353 /* UserListViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -128,12 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				9B9355FC29A0957F0013C02D /* Main.storyboard */,
-				9B93562F29A100BA0013C02D /* ChatListCell.swift */,
-				9B93563029A100BA0013C02D /* ChatListCell.xib */,
-				9B93563329A100E00013C02D /* TalkCell_1.swift */,
-				9B93563429A100E00013C02D /* TalkCell_1.xib */,
-				9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */,
-				9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */,
+				9BE4B33B29A5E987007C4EB2 /* Xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +154,21 @@
 				9B93562729A0CCCB0013C02D /* Constants.swift */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		9BE4B33B29A5E987007C4EB2 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				9B93562F29A100BA0013C02D /* ChatListCell.swift */,
+				9B93563029A100BA0013C02D /* ChatListCell.xib */,
+				9B93563329A100E00013C02D /* TalkCell_1.swift */,
+				9B93563429A100E00013C02D /* TalkCell_1.xib */,
+				9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */,
+				9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */,
+				9B7F202129A5E09300B9E353 /* UserListCell.swift */,
+				9B7F202229A5E09300B9E353 /* UserListCell.xib */,
+			);
+			path = Xib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B7F202429A5E09500B9E353 /* UserListCell.xib in Resources */,
 				9B7F201829A1ECAF00B9E353 /* TalkCell_2.xib in Resources */,
 				9B93563629A100E00013C02D /* TalkCell_1.xib in Resources */,
 				9B93560329A095880013C02D /* LaunchScreen.storyboard in Resources */,
@@ -238,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B7F202329A5E09400B9E353 /* UserListCell.swift in Sources */,
 				9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */,
 				9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */,
 				9B93561D29A0B1D10013C02D /* HomeViewController.swift in Sources */,
@@ -246,6 +265,7 @@
 				9B93562129A0B2040013C02D /* LoginViewController.swift in Sources */,
 				9B93561F29A0B1F80013C02D /* RegisterViewController.swift in Sources */,
 				9B93562329A0B2220013C02D /* ChatListTableViewController.swift in Sources */,
+				9B7F202029A5D9AD00B9E353 /* UserListViewController.swift in Sources */,
 				9B7F201C29A4CA1600B9E353 /* User.swift in Sources */,
 				9B7F201729A1ECAF00B9E353 /* TalkCell_2.swift in Sources */,
 				9B93562829A0CCCB0013C02D /* Constants.swift in Sources */,
