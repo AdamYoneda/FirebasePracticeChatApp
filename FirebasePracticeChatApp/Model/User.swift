@@ -16,6 +16,8 @@ struct User {
     let createdAt: Timestamp
     let iconImageURLinStorage: String
     
+    var uid: String?    // collection("users").documentID
+    
 //    var generatedImage: UIImage
     
 //    var image: UIImage? {

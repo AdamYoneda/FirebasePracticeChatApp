@@ -30,12 +30,19 @@ struct K {
     
     struct FStore {
         static let collectionName_Users = "users"
+        static let collectionName_ChatRooms = "chatRooms"
         
         struct UserInfo {
             static let email = "email"
             static let username = "username"
             static let createdTime = "createdAt"
             static let iconImageURL = "iconImageURLinStorage"
+        }
+        
+        struct ChatRooms {
+            static let members = "members"
+            static let latestMessageID = "latestMessageID"
+            static let createdAt = "createdAT"
         }
     }
     

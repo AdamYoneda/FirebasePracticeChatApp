@@ -305,6 +305,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="addFriendPressed:" destination="A9S-9u-HJP" eventType="touchUpInside" id="gU6-90-02s"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>

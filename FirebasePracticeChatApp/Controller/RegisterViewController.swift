@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 import FirebaseStorage
@@ -56,8 +55,10 @@ class RegisterViewController: UIViewController {
     }
     
     private func createUser(iconImageURL: String) {
-        // 2. Authでユーザー登録
+        // 2. Authで新規ユーザー登録
         // https://firebase.google.com/docs/auth/ios/start?hl=ja#sign_up_new_users
+        print("[Register 2] Authで新規ユーザー登録")
+        
         guard let email = self.email.text else { return }
         guard let password = self.password.text else { return }
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
@@ -70,6 +71,8 @@ class RegisterViewController: UIViewController {
                 // 3. Authに新規登録したユーザーの情報をFirestoreに追加する
                 // func uploadImageToStorage からdownloadURLを渡され、URLもドキュメントに保存
                 // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ja#swift
+                print("[Register 3] Authに新規登録したユーザーの情報をFirestoreに追加する")
+                
                 guard let uid = result?.user.uid else { return }
                 guard let username = self.username.text else { return }
                 
@@ -92,6 +95,8 @@ class RegisterViewController: UIViewController {
     
     private func uploadImageToStorage() {
         // 1. Firebase Storageへの画像のアップロード
+        print("[Register 1] Firebase Storageへの画像のアップロード")
+        
         guard let image = iconImage.image else { return }
         guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }     // imageを小さくする
         
