@@ -34,6 +34,7 @@
 		9B93563529A100E00013C02D /* TalkCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93563329A100E00013C02D /* TalkCell_1.swift */; };
 		9B93563629A100E00013C02D /* TalkCell_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563429A100E00013C02D /* TalkCell_1.xib */; };
 		9BAE63A929A693CE00084375 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 9BAE63A829A693CE00084375 /* Nuke */; };
+		9BCD661929A8E5C900567FC5 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD661829A8E5C900567FC5 /* ChatRoom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		9B93563029A100BA0013C02D /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
 		9B93563329A100E00013C02D /* TalkCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell_1.swift; sourceTree = "<group>"; };
 		9B93563429A100E00013C02D /* TalkCell_1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell_1.xib; sourceTree = "<group>"; };
+		9BCD661829A8E5C900567FC5 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9B7F201B29A4CA1500B9E353 /* User.swift */,
+				9BCD661829A8E5C900567FC5 /* ChatRoom.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				9B7F202329A5E09400B9E353 /* UserListCell.swift in Sources */,
 				9B9355F729A0957F0013C02D /* AppDelegate.swift in Sources */,
 				9B9355F929A0957F0013C02D /* SceneDelegate.swift in Sources */,
+				9BCD661929A8E5C900567FC5 /* ChatRoom.swift in Sources */,
 				9B93561D29A0B1D10013C02D /* HomeViewController.swift in Sources */,
 				9B93563129A100BA0013C02D /* ChatListCell.swift in Sources */,
 				9B93562529A0C4840013C02D /* TalkViewController.swift in Sources */,

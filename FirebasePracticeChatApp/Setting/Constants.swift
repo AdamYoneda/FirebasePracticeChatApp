@@ -42,7 +42,7 @@ struct K {
         struct ChatRooms {
             static let members = "members"
             static let latestMessageID = "latestMessageID"
-            static let createdAt = "createdAT"
+            static let createdAt = "createdAt"
         }
     }
     

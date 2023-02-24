@@ -317,7 +317,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addFriendButton" destination="Edb-g5-YdJ" id="Ivh-nP-uX7"/>
+                        <outlet property="addFriendButton" destination="Edb-g5-YdJ" id="jU9-Dk-B1s"/>
                         <outlet property="userListTableView" destination="ljh-sR-jMn" id="NLF-Wl-VGp"/>
                     </connections>
                 </viewController>
@@ -349,14 +349,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Chat Room" id="UHm-Fy-Zkb">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="nh9-o0-UHr">
+                        <barButtonItem key="rightBarButtonItem" title="新規チャット" style="plain" id="nh9-o0-UHr">
                             <connections>
                                 <action selector="addPressed:" destination="zMd-Ed-tXT" id="5Hg-0v-zm2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="rightBarButtonItem" destination="nh9-o0-UHr" id="osX-2g-zR9"/>
+                        <outlet property="rightBarButtonItem" destination="nh9-o0-UHr" id="7at-0v-ezo"/>
                         <outlet property="tableView" destination="TiQ-rd-Wty" id="Fhi-O7-GIq"/>
                         <segue destination="MCO-mV-UTI" kind="show" identifier="ChatRoomToTalk" id="Dcy-NS-gCT"/>
                         <segue destination="Oe3-Ax-c5i" kind="show" identifier="ChatListToUserList" id="wy9-YG-wCi"/>

@@ -10,19 +10,19 @@ import Nuke
 
 class ChatListCell: UITableViewCell {
     
-//    var user: User? {
-//        didSet {
-//            if let user = user {
-//                latestMessage.text = user.email // 仮
-//                userName.text = user.username
-//                time.text = dateFormatterForDateLabel(date: (user.createdAt.dateValue()))
-//                let url = URL(string: user.iconImageURLinStorage)!
-//                Nuke.loadImage(with: url, into: userIconImage, completion: nil)
-//            }
-//        }
-//    }
-    
-//    var chatRoom
+    var chatRoom: ChatRoom? {
+        didSet {
+            guard let chatRoom = chatRoom else {
+                print("ChatListCell.swift：ChatRoomのunwrapに失敗")
+                return
+            }
+            latestMessage.text = chatRoom.latestMessageID
+            userName.text = chatRoom.partnerUer?.username
+            time.text = dateFormatterForDateLabel(date: chatRoom.createdAt.dateValue())
+            let url = URL(string: chatRoom.partnerUer!.iconImageURLinStorage)!
+            Nuke.loadImage(with: url, into: userIconImage, completion: nil)
+        }
+    }
     
     @IBOutlet weak var userIconImage: UIImageView!
     @IBOutlet weak var latestMessage: UILabel!
@@ -44,7 +44,7 @@ class ChatListCell: UITableViewCell {
     private func dateFormatterForDateLabel(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
-        formatter.timeStyle = .short
+        formatter.timeStyle = .none
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter.string(from: date)
     }

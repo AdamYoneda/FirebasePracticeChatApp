@@ -18,8 +18,18 @@ struct User {
     
     var uid: String?    // collection("users").documentID
     
-//    var generatedImage: UIImage
+    init(dictionary: [String: Any]) {
+        self.username = dictionary[K.FStore.UserInfo.username] as? String ?? ""
+        self.email = dictionary[K.FStore.UserInfo.email] as? String ?? ""
+        self.createdAt = dictionary[K.FStore.UserInfo.createdTime] as? Timestamp ?? Timestamp()
+        self.iconImageURLinStorage = dictionary[K.FStore.UserInfo.iconImageURL] as? String ?? ""
+    }
     
+}
+
+
+//    var generatedImage: UIImage
+
 //    var image: UIImage? {
 //        do {
 //            let url = URL(string: iconImageURLinStorage)
@@ -49,12 +59,3 @@ struct User {
 //            }
 //        }
 //    }
-    
-    init(dictionary: [String: Any]) {
-        self.username = dictionary[K.FStore.UserInfo.username] as? String ?? ""
-        self.email = dictionary[K.FStore.UserInfo.email] as? String ?? ""
-        self.createdAt = dictionary[K.FStore.UserInfo.createdTime] as? Timestamp ?? Timestamp()
-        self.iconImageURLinStorage = dictionary[K.FStore.UserInfo.iconImageURL] as? String ?? ""
-    }
-    
-}
