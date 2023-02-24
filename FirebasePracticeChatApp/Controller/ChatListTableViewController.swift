@@ -27,6 +27,11 @@ class ChatListTableViewController: UITableViewController {
         fetchLoginUserInfo()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("------ viewWiiAppear triggered ------")
+//        fetchChatroomsInfo()
+    }
+    
     private func setUpViews() {
         // Xibファイルを使って、Cellのデザインを指定
         tableView.register(UINib(nibName: K.Xib.chatlistCell, bundle: nil), forCellReuseIdentifier: K.CellID.chatCell)
@@ -34,8 +39,12 @@ class ChatListTableViewController: UITableViewController {
         rightBarButtonItem.style = .plain
     }
     
+    //MARK: - Firestoreから情報を取得
+
     // ログイン中のユーザーの情報の取得
     private func fetchLoginUserInfo() {
+        print("[CL 1] ログイン中のユーザーの情報の取得")
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }    // ログイン中のユーザーのUUIDを取得
         db.collection(K.FStore.collectionName_Users).document(uid).getDocument { (snapshot, err) in
             if let e = err {
@@ -50,41 +59,19 @@ class ChatListTableViewController: UITableViewController {
         }
     }
     
-    // -------------------Firestoreから読み込む必要がなくなったため削除---------------------------------
-    //    override func viewWillAppear(_ animated: Bool) {
-    //        super.viewWillAppear(animated)
-    //
-    //        fetchInfoFromFirestore()
-    //    }
-    //
-    //    // Firestoreからドキュメントを取得
-    //    // https://firebase.google.com/docs/firestore/query-data/get-data?hl=ja#get_a_document
-    //    private func fetchInfoFromFirestore() {
-    //        let docRef = db.collection(K.FStore.collectionName_Users)
-    //        docRef.getDocuments { (querySnapshot, error) in
-    //            if let e = error {
-    //                print("Firestoreからのドキュメントの取得に失敗: \(e)")
-    //                return
-    //            } else {
-    //                print("Firestoreからのドキュメントの取得に成功")
-    //                guard let snapshotDoc = querySnapshot?.documents else { return }
-    //                for doc in snapshotDoc {
-    //                    let user = User.init(dictionary: doc.data())
-    //                    // currentUserの情報を表示しないようにする
-    //                    guard let uid = Auth.auth().currentUser?.uid else { return }    // ログイン中のユーザーのUUIDを取得
-    //                    if uid == doc.documentID {  // Firestoreのドキュメント'users'に割り振られたUUIDが.documentIDに該当する
-    //                        return
-    //                    }
-    //
-    //                    self.users.append(user)
-    //                    DispatchQueue.main.async {
-    //                        self.tableView.reloadData()
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    // -------------------Firestoreから読み込む必要がなくなったため削除---------------------------------
+    // chatRoomsの情報を取得
+    private func fetchChatroomsInfo() {
+        print("[CL 2] chatRoomsの情報を取得")
+        
+        db.collection(K.FStore.collectionName_ChatRooms).getDocuments { querySnapshot, error in
+            if let e = error {
+                print("chatRoomsの情報の取得に失敗: \(e)")
+                return
+            } else {
+                
+            }
+        }
+    }
     
     //MARK: - IBAction
     // UerListTableVCへの画面遷移 modal

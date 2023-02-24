@@ -15,6 +15,7 @@ class UserListViewController: UIViewController {
     private let db = Firestore.firestore()
     private var users: [User] = []
     private var selectedUser: User?
+    private let chatListVC = ChatListTableViewController()
     
     @IBOutlet weak var userListTableView: UITableView!
     @IBOutlet weak var addFriendButton: UIButton!
@@ -39,7 +40,7 @@ class UserListViewController: UIViewController {
     // Firestoreからドキュメントを取得
     // https://firebase.google.com/docs/firestore/query-data/get-data?hl=ja#get_a_document
     private func fetchInfoFromFirestore() {
-        print("[1] Firestoreからログイン中のユーザー以外のユーザーの情報を取得")
+        print("[UL 1] Firestoreからログイン中のユーザー以外のユーザーの情報を取得")
         
         let docRef = db.collection(K.FStore.collectionName_Users)
         docRef.getDocuments { (querySnapshot, error) in
@@ -68,7 +69,7 @@ class UserListViewController: UIViewController {
     }
     
     @IBAction func addFriendPressed(_ sender: UIButton) {
-        print("[2] Firestoreへチャットルームの情報を保存")
+        print("[UL 2] Firestoreへチャットルームの情報を保存")
         
         // 各ユーザーのUUIDを取得
         guard let currentUserUid = auth.currentUser?.uid else { return }
@@ -87,12 +88,19 @@ class UserListViewController: UIViewController {
                 return
             } else {
                 print("Collection(ChatRoom)の情報の保存に成功")
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    self.chatListVC.viewWillAppear(true)
+                }
+                
             }
         }
     }
     
-    
+    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
+        self.dismiss(animated: true) {
+            self.chatListVC.viewWillAppear(true)    // 必要ないかも
+        }
+    }
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource methods

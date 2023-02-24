@@ -10,17 +10,19 @@ import Nuke
 
 class ChatListCell: UITableViewCell {
     
-    var user: User? {
-        didSet {
-            if let user = user {
-                latestMessage.text = user.email // 仮
-                userName.text = user.username
-                time.text = dateFormatterForDateLabel(date: (user.createdAt.dateValue()))
-                let url = URL(string: user.iconImageURLinStorage)!
-                Nuke.loadImage(with: url, into: userIconImage, completion: nil)
-            }
-        }
-    }
+//    var user: User? {
+//        didSet {
+//            if let user = user {
+//                latestMessage.text = user.email // 仮
+//                userName.text = user.username
+//                time.text = dateFormatterForDateLabel(date: (user.createdAt.dateValue()))
+//                let url = URL(string: user.iconImageURLinStorage)!
+//                Nuke.loadImage(with: url, into: userIconImage, completion: nil)
+//            }
+//        }
+//    }
+    
+//    var chatRoom
     
     @IBOutlet weak var userIconImage: UIImageView!
     @IBOutlet weak var latestMessage: UILabel!

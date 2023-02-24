@@ -267,11 +267,11 @@
             <objects>
                 <viewController id="A9S-9u-HJP" customClass="UserListViewController" customModule="FirebasePracticeChatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PRy-ZF-xXO">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ljh-sR-jMn">
-                                <rect key="frame" x="0.0" y="56" width="393" height="727"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserListCell" id="kO8-FL-XXQ">
@@ -295,9 +295,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l3a-De-2NL">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bqj-lU-I2j">
+                            <connections>
+                                <action selector="cancelPressed:" destination="A9S-9u-HJP" id="jo9-Gd-EdT"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="YVo-Oi-YQT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Edb-g5-YdJ">
-                                <rect key="frame" x="282.66666666666669" y="10.666666666666664" width="94.333333333333314" height="35"/>
+                                <rect key="frame" x="282.66666666666669" y="4.6666666666666679" width="94.333333333333314" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -354,7 +359,7 @@
                         <outlet property="rightBarButtonItem" destination="nh9-o0-UHr" id="osX-2g-zR9"/>
                         <outlet property="tableView" destination="TiQ-rd-Wty" id="Fhi-O7-GIq"/>
                         <segue destination="MCO-mV-UTI" kind="show" identifier="ChatRoomToTalk" id="Dcy-NS-gCT"/>
-                        <segue destination="Oe3-Ax-c5i" kind="presentation" identifier="ChatListToUserList" id="wy9-YG-wCi"/>
+                        <segue destination="Oe3-Ax-c5i" kind="show" identifier="ChatListToUserList" id="wy9-YG-wCi"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dzb-hu-SfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -468,8 +473,9 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oe3-Ax-c5i" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="zsM-gj-tx8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="V47-Ws-aur">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
