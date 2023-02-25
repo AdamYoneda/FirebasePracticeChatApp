@@ -25,14 +25,11 @@ class ChatListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        rightBarButtonItem.title = "新規チャット"
-//        rightBarButtonItem.style = .plain
+        //        rightBarButtonItem.title = "新規チャット"
+        //        rightBarButtonItem.style = .plain
         
         setUpViews()
         fetchLoginUserInfo()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         fetchChatroomsInfo()
     }
     
@@ -63,52 +60,74 @@ class ChatListTableViewController: UITableViewController {
     }
     
     // chatRoomsの情報を取得 from collection'chatRooms'
+    // https://firebase.google.com/docs/firestore/query-data/listen?hl=ja
     private func fetchChatroomsInfo() {
         print("[CL 2] chatRoomsの情報を取得")
         
-        db.collection(K.FStore.collectionName_ChatRooms).getDocuments { querySnapshot, error in
+        db.collection(K.FStore.collectionName_ChatRooms).addSnapshotListener { querySnapshot, error in
             if let e = error {
                 print("コレクション'chatRooms'の情報の取得に失敗: \(e)")
                 return
             } else {
                 print("コレクション'chatRooms'の情報の取得に成功")
-                guard let snapshotDocs = querySnapshot?.documents else { return }    // [QueryDocumentSnapshot]
+                guard let snapshot = querySnapshot else { return }
                 
-                // 各ドキュメントからChatRoomを生成し、partner userを特定して、作成したChatRoomのプロパティに追加し、配列chatRoomsに加える
-                for doc in snapshotDocs {
-                    // 取得したquerySnapshotからChatRoomを作成
-                    var chatRoom = ChatRoom(dictionary: doc.data())
-                    // ログイン中のユーザーのuidをAuthから取得
-                    guard let currentUserUid = self.auth.currentUser?.uid else { return }
+                // documentChangesを使って、snapshot間の変更部分のみを追加する
+                // https://firebase.google.com/docs/firestore/query-data/listen?hl=ja#view_changes_between_snapshots
+                                
+                snapshot.documentChanges.forEach({ diff in
+                    print("[CL 3] docmentChangesを使って、追加された情報のみを追加する")
                     
-                    // partnerUserを作成する
-                    for memberUid in chatRoom.members {
-                        if currentUserUid != memberUid {    // uidで判別
-                            print("[CL3] Partner Userの情報を取得")
+                    switch diff.type {
+                    case .added:
+                        self.handleAddedDocumentChange(documentChange: diff)
+                    case .modified, .removed:
+                        print("documentChangesのtypeが.modified or .removed")
+                    }
+                })
+                
+            }
+        }
+    }
+    
+    private func handleAddedDocumentChange(documentChange: DocumentChange) {
+        // 変更があった部分のdocument(追加されたdocument)
+        let doc = documentChange.document
+        // 取得したquerySnapshotからChatRoomを作成
+        var chatRoom = ChatRoom(dictionary: doc.data())
+        // ログイン中のユーザーのuidをAuthから取得
+        guard let currentUserUid = self.auth.currentUser?.uid else { return }
+        
+        print("[CL 4] Partner Userの情報を取得")
+        
+        // partnerUserを作成する
+        for memberUid in chatRoom.members {
+            if currentUserUid != memberUid {    // uidで判定
+                // Firestoreのコレクション'uers'から、partner userの情報を取得
+                self.db.collection(K.FStore.collectionName_Users)
+                    .document(memberUid)
+                    .getDocument { documentSnapshot, error in
+                        if let e = error {
+                            print("コレクション'users'からpartner userの情報の取得に失敗: \(e)")
+                            return
+                        } else {
+                            print("コレクション'users'からpartner userの情報の取得に成功")
+                            guard let dictionary = documentSnapshot?.data() else { return }
+                            var generatedUser = User(dictionary: dictionary)
+                            generatedUser.uid = memberUid   // コレクション'users'からの情報にはuidの情報がないため、代入
                             
-                            self.db.collection(K.FStore.collectionName_Users).document(memberUid).getDocument { documentSnapshot, error in
-                                if let e = error {
-                                    print("コレクション'users'からpartner userの情報の取得に失敗: \(e)")
-                                    return
-                                } else {
-                                    print("コレクション'users'からpartner userの情報の取得に成功")
-                                    guard let dictionary = documentSnapshot?.data() else { return }
-                                    var generatedUser = User(dictionary: dictionary)
-                                    generatedUser.uid = memberUid   // コレクション'users'にはuidの情報がないため、代入
-                                    
-                                    print("[CL 4] partner userプロパティに代入し、配列chatRoomsに追加していく")
-                                    // ChatRoomのプロパティpartnerUserに、generatedUserを代入する
-                                    chatRoom.partnerUer = generatedUser
-                                    // ChatRoomの情報を変数に与える
-                                    self.chatRooms.append(chatRoom)
-                                    DispatchQueue.main.async {
-                                        self.tableView.reloadData()
-                                    }
-                                }
+                            print("[CL 5] partner userプロパティに代入し、配列chatRoomsに追加していく")
+                            
+                            // ChatRoomのプロパティpartnerUserに、generatedUserを代入する
+                            chatRoom.partnerUer = generatedUser
+                            // ChatRoomの情報を変数に与える
+                            self.chatRooms.append(chatRoom)
+                            
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
                             }
                         }
                     }
-                }
             }
         }
     }

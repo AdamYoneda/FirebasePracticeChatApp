@@ -80,7 +80,7 @@ class UserListViewController: UIViewController {
         // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ja#swift
         db.collection(K.FStore.collectionName_ChatRooms).addDocument(data: [
             K.FStore.ChatRooms.members: members,
-            K.FStore.ChatRooms.latestMessageID: "",
+            K.FStore.ChatRooms.latestMessageID: "Latest message",
             K.FStore.ChatRooms.createdAt: Timestamp()
         ]) { error in
             if let e = error {
@@ -88,18 +88,13 @@ class UserListViewController: UIViewController {
                 return
             } else {
                 print("Collection(ChatRoom)の情報の保存に成功")
-                self.dismiss(animated: true) {
-                    self.chatListVC.viewWillAppear(true)
-                }
-                
+                self.dismiss(animated: true)
             }
         }
     }
     
     @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true) {
-            self.chatListVC.viewWillAppear(true)    // 必要ないかも
-        }
+        self.dismiss(animated: true)
     }
 }
 
