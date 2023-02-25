@@ -14,9 +14,9 @@ class ChatListTableViewController: UITableViewController {
     
     private let db = Firestore.firestore()
     private let auth = Auth.auth()
-    private var user: User? {
+    private var logginginUser: User? {
         didSet {
-            navigationItem.title = user?.username
+            navigationItem.title = logginginUser?.username
         }
     }
     private var chatRooms: [ChatRoom] = []
@@ -54,7 +54,7 @@ class ChatListTableViewController: UITableViewController {
                 print("ログイン中のユーザーの情報の取得に成功")
                 guard let snapshot = snapshot, let dic = snapshot.data() else { return }
                 let user = User(dictionary: dic)
-                self.user = user
+                self.logginginUser = user
             }
         }
     }
@@ -95,9 +95,10 @@ class ChatListTableViewController: UITableViewController {
         let doc = documentChange.document
         // 取得したquerySnapshotからChatRoomを作成
         var chatRoom = ChatRoom(dictionary: doc.data())
+        // ChatRoomのプロパティdocumentIdに、コレクション'chatRooms'から取得した.documentIDを代入する
+        chatRoom.documentId = doc.documentID
         // ログイン中のユーザーのuidをAuthから取得
         guard let currentUserUid = self.auth.currentUser?.uid else { return }
-        
         print("[CL 4] Partner Userの情報を取得")
         
         // partnerUserを作成する
@@ -140,7 +141,7 @@ class ChatListTableViewController: UITableViewController {
         performSegue(withIdentifier: K.SegueIdentifier.chatListToUserList, sender: self)
     }
     
-    // MARK: - Table view data source
+    // MARK: - tableViewDelegate, tableViewDataSource
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
@@ -158,5 +159,20 @@ class ChatListTableViewController: UITableViewController {
         return chatlistCell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.SegueIdentifier.chatToTalk, sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.SegueIdentifier.chatToTalk {
+            let talkViewController = segue.destination as! TalkViewController
+            if let index = sender as? IndexPath {
+                talkViewController.chatRoom = chatRooms[index.row]
+                talkViewController.chatRoom?.partnerUer = chatRooms[index.row].partnerUer
+                talkViewController.sender = logginginUser
+                talkViewController.sender?.uid = auth.currentUser?.uid
+            }
+        }
+    }
 }
 

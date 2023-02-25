@@ -1,3 +1,4 @@
+
 //
 //  Constants.swift
 //  FirebasePracticeChatApp
@@ -31,6 +32,7 @@ struct K {
     struct FStore {
         static let collectionName_Users = "users"
         static let collectionName_ChatRooms = "chatRooms"
+        static let collectionName_Messages = "messages"
         
         struct UserInfo {
             static let email = "email"
@@ -43,6 +45,13 @@ struct K {
             static let members = "members"
             static let latestMessageID = "latestMessageID"
             static let createdAt = "createdAt"
+        }
+        
+        struct Messages {
+            static let senderName = "senderName"
+            static let createdAt = "createdAt"
+            static let senderUid = "senderUid"
+            static let message = "message"
         }
     }
     

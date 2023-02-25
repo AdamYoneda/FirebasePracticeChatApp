@@ -12,12 +12,14 @@ class UserListCell: UITableViewCell {
     
     var user: User? {
         didSet {
-            if let user = user {
-                userName.text = user.username
-                
-                let url = URL(string: user.iconImageURLinStorage)!
-                Nuke.loadImage(with: url, into: userIcon, completion: nil)
+            guard let user = user else {
+                print("UserListCell.swift：userのunwrapに失敗")
+                return
             }
+            userName.text = user.username
+            
+            let url = URL(string: user.iconImageURLinStorage)!
+            Nuke.loadImage(with: url, into: userIcon, completion: nil)
         }
     }
     

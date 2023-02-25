@@ -16,6 +16,7 @@ struct ChatRoom {
     let createdAt: Timestamp
     
     var partnerUer: User?
+    var documentId: String?
     
     init(dictionary: [String: Any]) {
         self.members = dictionary[K.FStore.ChatRooms.members] as? [String] ?? []
