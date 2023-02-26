@@ -45,7 +45,11 @@ class ChatListTableViewController: UITableViewController {
     private func fetchLoginUserInfo() {
         print("[CL 1] ログイン中のユーザーの情報の取得")
         
-        guard let currentUserUid = auth.currentUser?.uid else { return }    // ログイン中のユーザーのUUIDを取得
+        // ログイン中のユーザーのUUIDを取得
+        guard let currentUserUid = auth.currentUser?.uid else {
+            print("currentUserのUidの取得に失敗")
+            return
+        }
         db.collection(K.FStore.collectionName_Users).document(currentUserUid).getDocument { (snapshot, err) in
             if let e = err {
                 print("ログイン中のユーザーの情報の取得に失敗: \(e)")
@@ -74,7 +78,6 @@ class ChatListTableViewController: UITableViewController {
                 
                 // documentChangesを使って、snapshot間の変更部分のみを追加する
                 // https://firebase.google.com/docs/firestore/query-data/listen?hl=ja#view_changes_between_snapshots
-                                
                 snapshot.documentChanges.forEach({ diff in
                     print("[CL 3] docmentChangesを使って、追加された情報のみを追加する")
                     
@@ -99,6 +102,9 @@ class ChatListTableViewController: UITableViewController {
         chatRoom.documentId = doc.documentID
         // ログイン中のユーザーのuidをAuthから取得
         guard let currentUserUid = self.auth.currentUser?.uid else { return }
+        // ログイン中のユーザーが、chatRoom.membersに含まれているかを判定(含まれていなければ以下の処理を行わない)
+        let currentUserisContain = chatRoom.members.contains(currentUserUid)
+        if !currentUserisContain { return }  // ログイン中のユーザーを含まない場合は以下の処理を省略
         print("[CL 4] Partner Userの情報を取得")
         
         // partnerUserを作成する

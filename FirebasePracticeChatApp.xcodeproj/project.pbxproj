@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B7F201729A1ECAF00B9E353 /* TalkCell_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */; };
-		9B7F201829A1ECAF00B9E353 /* TalkCell_2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */; };
 		9B7F201A29A3661000B9E353 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B7F201929A3661000B9E353 /* GoogleService-Info.plist */; };
 		9B7F201C29A4CA1600B9E353 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201B29A4CA1500B9E353 /* User.swift */; };
 		9B7F202029A5D9AD00B9E353 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7F201F29A5D9AD00B9E353 /* UserListViewController.swift */; };
@@ -31,16 +29,14 @@
 		9B93562829A0CCCB0013C02D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562729A0CCCB0013C02D /* Constants.swift */; };
 		9B93563129A100BA0013C02D /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93562F29A100BA0013C02D /* ChatListCell.swift */; };
 		9B93563229A100BA0013C02D /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563029A100BA0013C02D /* ChatListCell.xib */; };
-		9B93563529A100E00013C02D /* TalkCell_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93563329A100E00013C02D /* TalkCell_1.swift */; };
-		9B93563629A100E00013C02D /* TalkCell_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563429A100E00013C02D /* TalkCell_1.xib */; };
+		9B93563529A100E00013C02D /* TalkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B93563329A100E00013C02D /* TalkCell.swift */; };
+		9B93563629A100E00013C02D /* TalkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B93563429A100E00013C02D /* TalkCell.xib */; };
 		9B99249729AB495F00B1BCFB /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B99249629AB495F00B1BCFB /* Message.swift */; };
 		9BAE63A929A693CE00084375 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 9BAE63A829A693CE00084375 /* Nuke */; };
 		9BCD661929A8E5C900567FC5 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCD661829A8E5C900567FC5 /* ChatRoom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell_2.swift; sourceTree = "<group>"; };
-		9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell_2.xib; sourceTree = "<group>"; };
 		9B7F201929A3661000B9E353 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		9B7F201B29A4CA1500B9E353 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		9B7F201F29A5D9AD00B9E353 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
@@ -61,8 +57,8 @@
 		9B93562729A0CCCB0013C02D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		9B93562F29A100BA0013C02D /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		9B93563029A100BA0013C02D /* ChatListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
-		9B93563329A100E00013C02D /* TalkCell_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell_1.swift; sourceTree = "<group>"; };
-		9B93563429A100E00013C02D /* TalkCell_1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell_1.xib; sourceTree = "<group>"; };
+		9B93563329A100E00013C02D /* TalkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkCell.swift; sourceTree = "<group>"; };
+		9B93563429A100E00013C02D /* TalkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalkCell.xib; sourceTree = "<group>"; };
 		9B99249629AB495F00B1BCFB /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		9BCD661829A8E5C900567FC5 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,10 +165,8 @@
 			children = (
 				9B93562F29A100BA0013C02D /* ChatListCell.swift */,
 				9B93563029A100BA0013C02D /* ChatListCell.xib */,
-				9B93563329A100E00013C02D /* TalkCell_1.swift */,
-				9B93563429A100E00013C02D /* TalkCell_1.xib */,
-				9B7F201529A1ECAF00B9E353 /* TalkCell_2.swift */,
-				9B7F201629A1ECAF00B9E353 /* TalkCell_2.xib */,
+				9B93563329A100E00013C02D /* TalkCell.swift */,
+				9B93563429A100E00013C02D /* TalkCell.xib */,
 				9B7F202129A5E09300B9E353 /* UserListCell.swift */,
 				9B7F202229A5E09300B9E353 /* UserListCell.xib */,
 			);
@@ -249,8 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B7F202429A5E09500B9E353 /* UserListCell.xib in Resources */,
-				9B7F201829A1ECAF00B9E353 /* TalkCell_2.xib in Resources */,
-				9B93563629A100E00013C02D /* TalkCell_1.xib in Resources */,
+				9B93563629A100E00013C02D /* TalkCell.xib in Resources */,
 				9B93560329A095880013C02D /* LaunchScreen.storyboard in Resources */,
 				9B93563229A100BA0013C02D /* ChatListCell.xib in Resources */,
 				9B93560029A095880013C02D /* Assets.xcassets in Resources */,
@@ -278,10 +271,9 @@
 				9B93562329A0B2220013C02D /* ChatListTableViewController.swift in Sources */,
 				9B7F202029A5D9AD00B9E353 /* UserListViewController.swift in Sources */,
 				9B7F201C29A4CA1600B9E353 /* User.swift in Sources */,
-				9B7F201729A1ECAF00B9E353 /* TalkCell_2.swift in Sources */,
 				9B99249729AB495F00B1BCFB /* Message.swift in Sources */,
 				9B93562829A0CCCB0013C02D /* Constants.swift in Sources */,
-				9B93563529A100E00013C02D /* TalkCell_1.swift in Sources */,
+				9B93563529A100E00013C02D /* TalkCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

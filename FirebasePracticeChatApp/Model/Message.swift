@@ -16,6 +16,8 @@ struct Message {
     let senderUid: String
     let createdAt: Timestamp
     
+    var partnerUser: User?
+    
     init(dictionary: [String: Any]) {
         self.senderName = dictionary[K.FStore.Messages.senderName] as? String ?? ""
         self.message = dictionary[K.FStore.Messages.message] as? String ?? ""

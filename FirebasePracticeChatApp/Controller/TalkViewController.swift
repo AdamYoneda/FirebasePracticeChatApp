@@ -111,7 +111,8 @@ class TalkViewController: UIViewController {
                             print("[T-fetch 3] 取得したdocumentChangeから、Messageオブジェクトを作成し、配列messagesに追加")
                             // 取得したdocumentChangeから、Messageオブジェクトを作成
                             let messageDic = diff.document.data()
-                            let generatedMessage = Message(dictionary: messageDic)
+                            var generatedMessage = Message(dictionary: messageDic)
+                            generatedMessage.partnerUser = self.chatRoom?.partnerUer
                             self.messages.append(generatedMessage)
                             DispatchQueue.main.async {
                                 self.talkTable.reloadData()
@@ -141,7 +142,7 @@ extension TalkViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let talkCell = tableView.dequeueReusableCell(withIdentifier: K.CellID.talkCell, for: indexPath) as! TalkCell_1
+        let talkCell = tableView.dequeueReusableCell(withIdentifier: K.CellID.talkCell, for: indexPath) as! TalkCell
         talkCell.message = messages[indexPath.row]
         return talkCell
     }
