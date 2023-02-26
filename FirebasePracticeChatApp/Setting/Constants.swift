@@ -25,7 +25,7 @@ struct K {
     
     struct Xib {
         static let chatlistCell: String = "ChatListCell"
-        static let talkCell_1 = "MessageCell_1"
+        static let talkCell_1 = "TalkCell_1"
         static let userListCell = "UserListCell"
     }
     
