@@ -92,7 +92,8 @@ class TalkViewController: UIViewController {
         }
         print("[T-fetch 1] addSnapshotLitenerでコレクション'message'から情報を取得")
         
-        // addSnapshotLitenerでデータを取得する
+        // addSnapshotLitenerでデータを取得する / .order()で、並べ替え
+        // https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=ja#order_and_limit_data
         db.collection(K.FStore.collectionName_ChatRooms)
             .document(chatroomDocId).collection(K.FStore.collectionName_Messages).order(by: K.FStore.Messages.createdAt)
             .addSnapshotListener { querySnapthot, error in
