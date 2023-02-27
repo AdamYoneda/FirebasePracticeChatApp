@@ -447,6 +447,7 @@
                     <navigationItem key="navigationItem" id="XIT-x3-NUu"/>
                     <connections>
                         <outlet property="messageTextField" destination="Jp9-7i-RKd" id="hEj-Lo-hJa"/>
+                        <outlet property="sendButton" destination="rv8-ge-JMl" id="O3h-mR-SET"/>
                         <outlet property="talkTable" destination="jON-Md-eqi" id="Kto-JW-ome"/>
                     </connections>
                 </viewController>

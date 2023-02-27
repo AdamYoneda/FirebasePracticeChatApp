@@ -74,16 +74,15 @@ class ChatListTableViewController: UITableViewController {
                 print("コレクション'chatRooms'の情報の取得に成功")
                 guard let snapshot = querySnapshot else { return }
                 
+                print("[CL 3] docmentChangesを使って、追加された情報のみを追加する")
                 // documentChangesを使って、snapshot間の変更部分のみを追加する
                 // https://firebase.google.com/docs/firestore/query-data/listen?hl=ja#view_changes_between_snapshots
                 snapshot.documentChanges.forEach({ diff in
-                    print("[CL 3] docmentChangesを使って、追加された情報のみを追加する")
-                    
                     switch diff.type {
-                    case .added:
+                    case .added, .modified:
                         self.handleAddedDocumentChange(documentChange: diff)
-                    case .modified, .removed:
-                        print("documentChangesのtypeが.modified or .removed")
+                    case .removed:
+                        print("documentChangesのtypeがremoved")
                     }
                 })
                 
@@ -96,47 +95,128 @@ class ChatListTableViewController: UITableViewController {
         // 変更があった部分のdocument(追加されたdocument)
         let doc = documentChange.document
         // 取得したquerySnapshotからChatRoomを作成
-        var chatRoom = ChatRoom(dictionary: doc.data())
+        var fetchedChatRoom = ChatRoom(dictionary: doc.data())
         // ChatRoomのプロパティdocumentIdに、コレクション'chatRooms'から取得した.documentIDを代入する
-        chatRoom.documentId = doc.documentID
+        fetchedChatRoom.documentId = doc.documentID
         // ログイン中のユーザーのuidをAuthから取得
         guard let currentUserUid = self.auth.currentUser?.uid else { return }
         // ログイン中のユーザーが、chatRoom.membersに含まれているかを判定(含まれていなければ以下の処理を行わない)
-        let currentUserisContain = chatRoom.members.contains(currentUserUid)
+        let currentUserisContain = fetchedChatRoom.members.contains(currentUserUid)
         if !currentUserisContain { return }  // ログイン中のユーザーを含まない場合は以下の処理を省略
         print("[CL 4] Partner Userの情報を取得")
         
         // partnerUserを作成する
-        for memberUid in chatRoom.members {
+        for memberUid in fetchedChatRoom.members {
             if currentUserUid != memberUid {    // uidで判定
                 // Firestoreのコレクション'uers'から、partner userの情報を取得
                 self.db.collection(K.FStore.collectionName_Users)
                     .document(memberUid)
-                    .getDocument { documentSnapshot, error in
+                    .getDocument { userSnapshot, error in
                         if let e = error {
                             print("コレクション'users'からpartner userの情報の取得に失敗: \(e)")
                             return
                         } else {
                             print("コレクション'users'からpartner userの情報の取得に成功")
-                            guard let dictionary = documentSnapshot?.data() else { return }
-                            var generatedUser = User(dictionary: dictionary)
-                            generatedUser.uid = memberUid   // コレクション'users'からの情報にはuidの情報がないため、代入
+                            print("[CL 5] ChatRoomのプロパティpartnerUserに値を与える")
                             
-                            print("[CL 5] partner userプロパティに代入し、配列chatRoomsに追加していく")
-                            
+                            guard let dictionary = userSnapshot?.data() else { return }
+                            var fetchedUser = User(dictionary: dictionary)
+                            fetchedUser.uid = memberUid   // コレクション'users'からの情報にはuidの情報がないため、代入
                             // ChatRoomのプロパティpartnerUserに、generatedUserを代入する
-                            chatRoom.partnerUer = generatedUser
-                            // ChatRoomの情報を変数に与える
-                            self.chatRooms.append(chatRoom)
+                            fetchedChatRoom.partnerUer = fetchedUser
                             
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                            }
+                            print("[CL 6] ChatRoomのlatestMessageIDから、最新のMessageを取得")
+                            guard let chatroomID = fetchedChatRoom.documentId else { return }
+                            let latestMessageID = fetchedChatRoom.latestMessageID
+                            
+                            self.db.collection(K.FStore.collectionName_ChatRooms).document(chatroomID)
+                                .collection(K.FStore.collectionName_Messages).document(latestMessageID).getDocument { messageSnapshot, error in
+                                    if let e = error {
+                                        print("最新のメッセージの取得に失敗:\(e)")
+                                        return
+                                    } else {
+                                        if let dic = messageSnapshot?.data() {
+                                            print("最新のメッセージの取得に成功")
+                                            let fetchedMessage = Message(dictionary: dic)
+                                            fetchedChatRoom.latestMessage = fetchedMessage
+                                            print("[CL 7] ChatRoomのプロパティlatestMessageに値を代入し、配列chatRoomsに追加していく")
+                                            self.chatRooms.append(fetchedChatRoom)
+                                        } else {
+                                            print("messageSnapshotの取得に失敗")
+                                            self.chatRooms.append(fetchedChatRoom)  // latestMessage: Message?がなくてもとりあえず追加
+                                            return
+                                        }
+                                       
+                                        DispatchQueue.main.async {
+                                            self.tableView.reloadData()
+                                        }
+                                    }
+                                }
                         }
                     }
             }
         }
     }
+    
+    //    private func handleModifiedDocumentChange(documentChange: DocumentChange) {
+    //        // 変更があった部分のdocument(追加されたdocument)
+    //        let doc = documentChange.document
+    //        // 取得したquerySnapshotからChatRoomを作成
+    //        var fetchedChatRoom = ChatRoom(dictionary: doc.data())
+    //        // ChatRoomのプロパティdocumentIdに、コレクション'chatRooms'から取得した.documentIDを代入する
+    //        fetchedChatRoom.documentId = doc.documentID
+    //        // ログイン中のユーザーのuidをAuthから取得
+    //        guard let currentUserUid = self.auth.currentUser?.uid else { return }
+    //        // ログイン中のユーザーが、chatRoom.membersに含まれているかを判定(含まれていなければ以下の処理を行わない)
+    //        let currentUserisContain = fetchedChatRoom.members.contains(currentUserUid)
+    //        if !currentUserisContain { return }  // ログイン中のユーザーを含まない場合は以下の処理を省略
+    //
+    //        // partnerUserを作成する
+    //        for memberUid in fetchedChatRoom.members {
+    //            if currentUserUid != memberUid {    // uidで判定
+    //                // Firestoreのコレクション'uers'から、partner userの情報を取得
+    //                self.db.collection(K.FStore.collectionName_Users)
+    //                    .document(memberUid)
+    //                    .getDocument { userSnapshot, error in
+    //                        if let e = error {
+    //                            print("コレクション'users'からpartner userの情報の取得に失敗: \(e)")
+    //                            return
+    //                        } else {
+    //                            print("コレクション'users'からpartner userの情報の取得に成功")
+    //                            guard let dictionary = userSnapshot?.data() else { return }
+    //                            var generatedUser = User(dictionary: dictionary)
+    //                            generatedUser.uid = memberUid   // コレクション'users'からの情報にはuidの情報がないため、代入
+    //                            // ChatRoomのプロパティpartnerUserに、generatedUserを代入する
+    //                            fetchedChatRoom.partnerUer = generatedUser
+    //
+    //                            // 以下がhandleAddedDocumentChangeとの違い
+    //                            guard let chatroomID = fetchedChatRoom.documentId else { return }
+    //                            let latestMessageID = fetchedChatRoom.latestMessageID
+    //
+    //                            print("[CL - modified] latestMessageIDを使って、getDocumentで最新のメッセージの情報を取得する")
+    //                            self.db.collection(K.FStore.collectionName_ChatRooms).document(chatroomID)
+    //                                .collection(K.FStore.collectionName_Messages).document(latestMessageID).getDocument { messageSnapshot, error in
+    //                                    if let e = error {
+    //                                        print("最新のメッセージの取得に失敗:\(e)")
+    //                                        return
+    //                                    } else {
+    //                                        print("最新のメッセージの取得に成功")
+    //                                        guard let documet = messageSnapshot?.data() else { return }
+    //                                        let fetchedMessage = Message(dictionary: documet)
+    //                                        fetchedChatRoom.latestMessage = fetchedMessage
+    //
+    //                                        self.chatRooms.append(fetchedChatRoom)
+    //
+    //                                        DispatchQueue.main.async {
+    //                                            self.tableView.reloadData()
+    //                                        }
+    //                                    }
+    //                                }
+    //                        }
+    //                    }
+    //            }
+    //        }
+    //    }
     
     
     //MARK: - IBAction

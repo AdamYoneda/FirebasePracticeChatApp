@@ -16,11 +16,22 @@ class ChatListCell: UITableViewCell {
                 print("ChatListCell.swift：ChatRoomのunwrapに失敗")
                 return
             }
-            latestMessage.text = chatRoom.latestMessageID
-            userName.text = chatRoom.partnerUer?.username
-            time.text = dateFormatterForDateLabel(date: chatRoom.createdAt.dateValue())
-            let url = URL(string: chatRoom.partnerUer!.iconImageURLinStorage)!
-            Nuke.loadImage(with: url, into: userIconImage, completion: nil)
+            if let fetchedLatestMessage = chatRoom.latestMessage {
+                // すでに会話をしているユーザー
+                latestMessage.text = fetchedLatestMessage.message
+                userName.text = chatRoom.partnerUer?.username
+                time.text = dateFormatterForDateLabel(date: fetchedLatestMessage.createdAt.dateValue())
+                let url = URL(string: chatRoom.partnerUer!.iconImageURLinStorage)!
+                Nuke.loadImage(with: url, into: userIconImage, completion: nil)
+            } else {
+                // まだ会話を開始していないユーザー
+                print("ChatListCell.swift：クラスChatRoomのプロパティlatestMessageの取得に失敗")
+                latestMessage.text = ""
+                userName.text = chatRoom.partnerUer?.username
+                time.text = ""
+                let url = URL(string: chatRoom.partnerUer!.iconImageURLinStorage)!
+                Nuke.loadImage(with: url, into: userIconImage, completion: nil)
+            }
         }
     }
     
@@ -43,8 +54,8 @@ class ChatListCell: UITableViewCell {
     
     private func dateFormatterForDateLabel(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .full
-        formatter.timeStyle = .none
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
         formatter.locale = Locale(identifier: "ja_JP")
         return formatter.string(from: date)
     }

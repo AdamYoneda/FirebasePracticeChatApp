@@ -22,6 +22,7 @@ class TalkViewController: UIViewController {
     
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var talkTable: UITableView!
+    @IBOutlet weak var sendButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +43,13 @@ class TalkViewController: UIViewController {
         
     }
     
-    /// Firebaseに入力したメッセージ(text)を保存していく
+    
     @IBAction func sendMessage(_ sender: UIButton) {
+        addMessageToFirestore()
+    }
+    
+    /// Firebaseに入力したメッセージ(text)を保存していく
+    private func addMessageToFirestore() {
         print("[T-send 1] Firestoreのコレクション'message'に保存するメッセージ（テキスト）を作成")
         // 保存する辞書型のデータを作成
         guard let chatroomDocId = chatRoom?.documentId else {
@@ -54,28 +60,61 @@ class TalkViewController: UIViewController {
             print("senderの取得に失敗")
             return
         }
+        guard let messageText = messageTextField.text, !messageText.isEmpty else {
+            print("messageTextFieldに何も入力されていない")
+            return
+        }
         let messageData: [String: Any] = [
             K.FStore.Messages.senderName: senderUser.username,
             K.FStore.Messages.createdAt: Timestamp(),
             K.FStore.Messages.senderUid: senderUser.uid!,
-            K.FStore.Messages.message: messageTextField.text!
+            K.FStore.Messages.message: messageText
         ]
         
         print("[T-send 2] .setDataでデータを追加する")
         // Firebaseにメッセージを保存する(.setData)
         // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ja#set_a_document
         // コレクション'chatRooms'/ドキュメント'chatRoomId(UUID)'/コレクション'messages'にデータを保存していく
+        // document()にlatestMessageIDのuuidを自分で設定することで、保存したメッセージからuuidを読み込む手間を省略
+        let latestMessage_Id = randomString(length: 20)
         db.collection(K.FStore.collectionName_ChatRooms)
             .document(chatroomDocId).collection(K.FStore.collectionName_Messages)
-            .document().setData(messageData) { error in
+            .document(latestMessage_Id).setData(messageData) { error in
                 if let e = error {
                     print("コレクション'messages'にmessage情報を保存することに失敗：\(e)")
                     return
                 } else {
                     print("コレクション'messages'にmessage情報を保存することに成功")
+                    // chatRoomsのlatestMessageに保存
+                    self.saveLatestMessage(lm_Id: latestMessage_Id, cr_id: chatroomDocId)
                     self.messageTextField.text = ""  // 送信（Firestoreに保存）後に何も表示しない
                 }
             }
+    }
+    
+    /// ドキュメント全体を上書きすることなく、コレクション'chatRooms'のlatestMessageIDのフィールドを更新する
+    private func saveLatestMessage(lm_Id latestMessage_Id: String, cr_id chatRoom_docId: String) {
+        // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ja#update-data
+        // document()にlatestMessageIDのuuidを自分で設定することで、保存したメッセージからuuidを読み込む手間を省略した
+        let latestMessageID = latestMessage_Id
+        let latestMessageData = [K.FStore.ChatRooms.latestMessageID: latestMessageID]
+        print("[T- fetch 4] コレクション'chatRooms'のlatestMessageIDを更新する")
+        
+        db.collection(K.FStore.collectionName_ChatRooms)
+            .document(chatRoom_docId).updateData(latestMessageData) { error in
+                if let e = error {
+                    print("Latest messageの保存に失敗: \(e)")
+                    return
+                } else {
+                    print("Latest messageの保存に成功")
+                }
+            }
+    }
+    
+    /// ランダムな文字列を作成
+    private func randomString(length: Int) -> String {
+      let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in characters.randomElement()! })
     }
     
     /// 画面をタップすると、キーボードが閉じる
@@ -166,8 +205,10 @@ extension TalkViewController: UITextFieldDelegate {
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField.text != "" {
+            sendButton.isEnabled = true
             return true
         } else {
+            sendButton.isEnabled = false
             return false
         }
     }
