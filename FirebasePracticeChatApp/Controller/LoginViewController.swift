@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    /// Authを使って、emailとpasswordでログイン認証を行う
     @IBAction private func loginPressed(_ sender: UIButton) {
         guard let email = email.text else { return }
         guard let password = password.text else { return }
@@ -34,6 +35,7 @@ class LoginViewController: UIViewController {
         }
     }
     
+    /// 画面をタップすると、キーボードが閉じる
     @IBAction private func tapScreen(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }

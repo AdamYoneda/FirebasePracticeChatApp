@@ -38,7 +38,7 @@ class TalkViewController: UIViewController {
         
     }
     
-    // Firebaseに入力したメッセージ(text)を保存していく
+    /// Firebaseに入力したメッセージ(text)を保存していく
     @IBAction func sendMessage(_ sender: UIButton) {
         print("[T-send 1] Firestoreのコレクション'message'に保存するメッセージ（テキスト）を作成")
         // 保存する辞書型のデータを作成
@@ -74,12 +74,12 @@ class TalkViewController: UIViewController {
             }
     }
     
-    // 画面をタップすると、キーボードが閉じる
+    /// 画面をタップすると、キーボードが閉じる
     @IBAction func tapScreen(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
-    // すでにFirestoreに保存されているメッセージを取得する
+    /// Firestoreに保存されているメッセージをコレクション'messages'から取得する
     private func fetchMessages() {
         // chatRoomsのドキュメントIDを取得
         guard let chatroomDocId = chatRoom?.documentId else {

@@ -27,6 +27,7 @@ class UserListViewController: UIViewController {
         fetchInfoFromFirestore()
     }
     
+    /// viewに表示するオブジェクトの外観を設定
     private func setUpViews() {
         userListTableView.delegate = self
         userListTableView.dataSource = self
@@ -37,8 +38,8 @@ class UserListViewController: UIViewController {
         navigationItem.title = "User List"
     }
     
-    // Firestoreからドキュメントを取得
-    // https://firebase.google.com/docs/firestore/query-data/get-data?hl=ja#get_a_document
+    /// Firestoreからドキュメントを取得 from コレクション'users'
+    /// https://firebase.google.com/docs/firestore/query-data/get-data?hl=ja#get_a_document
     private func fetchInfoFromFirestore() {
         print("[UL 1] Firestoreからログイン中のユーザー以外のユーザーの情報を取得")
         
@@ -68,6 +69,7 @@ class UserListViewController: UIViewController {
         }
     }
     
+    /// コレクション'chatRooms'にChatRoomモデルに該当する情報を保存する
     @IBAction func addFriendPressed(_ sender: UIButton) {
         print("[UL 2] Firestoreへチャットルームの情報を保存")
         

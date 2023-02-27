@@ -12,7 +12,7 @@ import FirebaseStorage
 
 class RegisterViewController: UIViewController {
     
-    let db = Firestore.firestore()
+    private let db = Firestore.firestore()
     
     @IBOutlet weak private var iconImage: UIImageView!
     @IBOutlet weak private var username: UITextField!
@@ -32,6 +32,7 @@ class RegisterViewController: UIViewController {
         
     }
     
+    /// UIImagePickerControllerを表示させる
     @IBAction private func addImage(_ sender: UIButton) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -40,20 +41,21 @@ class RegisterViewController: UIViewController {
         present(imagePickerController, animated: true, completion: nil)
     }
     
-    // 画面をタップするとキーボードをフェードアウトさせる
+    /// 画面をタップするとキーボードをフェードアウトさせる
     @IBAction private func tapScreen(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
     
     //MARK: - Upload User Info to Firestore/Storage
     
+    /// Storageへの画像ファイルのアップロード、Authでのユーザー新規登録、Firestoreへのユーザー新規の保存
     @IBAction private func registerPressed(_ sender: UIButton) {
-        // Storageへの画像ファイルのアップロード、Authでのユーザー新規登録、Firestoreへのユーザー新規の保存
         uploadImageToStorage()
         // ChatListTableVCへの画面遷移
         self.performSegue(withIdentifier: K.SegueIdentifier.registerToChat, sender: self)
     }
     
+    /// Authを使って、新規ユーザーを作成
     private func createUser(iconImageURL: String) {
         // 2. Authで新規ユーザー登録
         // https://firebase.google.com/docs/auth/ios/start?hl=ja#sign_up_new_users
@@ -93,12 +95,17 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    /// Firebase Storageを使って、画像をアップロードする
     private func uploadImageToStorage() {
         // 1. Firebase Storageへの画像のアップロード
         print("[Register 1] Firebase Storageへの画像のアップロード")
         
-        guard let image = iconImage.image else { return }
-        guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }     // imageを小さくする
+        guard let image = iconImage.image else {
+            print("iconImageから画像の取得に失敗")
+            return
+        }
+        // imageを小さくする(容量を小さくするため)
+        guard let uploadImage = image.jpegData(compressionQuality: 0.3) else { return }
         
         // Referenceの作成
         // https://firebase.google.com/docs/storage/ios/create-reference?hl=ja#create_a_reference
@@ -124,6 +131,7 @@ class RegisterViewController: UIViewController {
                 // You can also access to download URL after upload.
                 imageRef.downloadURL { (url, error) in
                     guard let downloadURL: String = url?.absoluteString else { return }
+                    // 作成したfunc createUser(...)を呼び出す
                     self.createUser(iconImageURL: downloadURL)
                 }
             }
@@ -135,6 +143,7 @@ class RegisterViewController: UIViewController {
 //MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
 
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // 選択した画像をプロパティiconImageに代入する
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let editedImage = info[.editedImage] as? UIImage {
             iconImage.image = editedImage
@@ -148,11 +157,13 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
 //MARK: - UITextFieldDelegate
 
 extension RegisterViewController: UITextFieldDelegate {
+    // Returnを押すと編集が終わる（キーボードが閉じる）
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
     }
     
+    // UITextFieldにテキストがある場合は、returnを押して編集を終了でき、テキストがない場合は、終了できない
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField.text != "" {
             return true

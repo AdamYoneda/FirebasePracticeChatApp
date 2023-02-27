@@ -25,23 +25,21 @@ class ChatListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        rightBarButtonItem.title = "新規チャット"
-        //        rightBarButtonItem.style = .plain
         
         setUpViews()
         fetchLoginUserInfo()
         fetchChatroomsInfo()
     }
     
+    /// Xibファイルを使って、ChatListのCellのデザインを指定
     private func setUpViews() {
-        // Xibファイルを使って、Cellのデザインを指定
         tableView.register(UINib(nibName: K.Xib.chatlistCell, bundle: nil), forCellReuseIdentifier: K.CellID.chatCell)
         
     }
     
     //MARK: - Firestoreから情報を取得
     
-    // ログイン中のユーザーの情報の取得 from collection'users'
+    /// ログイン中のユーザーの情報の取得 from collection'users'
     private func fetchLoginUserInfo() {
         print("[CL 1] ログイン中のユーザーの情報の取得")
         
@@ -63,8 +61,8 @@ class ChatListTableViewController: UITableViewController {
         }
     }
     
-    // chatRoomsの情報を取得 from collection'chatRooms'
-    // https://firebase.google.com/docs/firestore/query-data/listen?hl=ja
+    /// chatRoomsの情報を取得 from collection'chatRooms'
+    /// https://firebase.google.com/docs/firestore/query-data/listen?hl=ja
     private func fetchChatroomsInfo() {
         print("[CL 2] chatRoomsの情報を取得")
         
@@ -93,6 +91,7 @@ class ChatListTableViewController: UITableViewController {
         }
     }
     
+    /// documentChangesから得られた情報に基づいて処理を行う
     private func handleAddedDocumentChange(documentChange: DocumentChange) {
         // 変更があった部分のdocument(追加されたdocument)
         let doc = documentChange.document
@@ -142,7 +141,7 @@ class ChatListTableViewController: UITableViewController {
     
     //MARK: - IBAction
     
-    // UerListTableVCへの画面遷移 modal
+    /// UerListTableVCへの画面遷移 modal
     @IBAction func addPressed(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: K.SegueIdentifier.chatListToUserList, sender: self)
     }
@@ -164,11 +163,12 @@ class ChatListTableViewController: UITableViewController {
         chatlistCell.chatRoom = chatRooms[indexPath.row]
         return chatlistCell
     }
-    
+    // ChatListVC → TalkVCへの画面遷移
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.SegueIdentifier.chatToTalk, sender: indexPath)
     }
     
+    // ChatListVC → TalkVCへの画面遷移の際に、プロパティに値を渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.SegueIdentifier.chatToTalk {
             let talkViewController = segue.destination as! TalkViewController
