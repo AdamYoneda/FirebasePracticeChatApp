@@ -31,6 +31,10 @@ class TalkViewController: UIViewController {
         talkTable.dataSource = self
         talkTable.backgroundColor = UIColor.darkGray
         talkTable.register(UINib(nibName: K.Xib.talkCell_1, bundle: nil), forCellReuseIdentifier: K.CellID.talkCell)
+        // 1番下のCellの表示が途切れないようにする
+        talkTable.contentInset = .init(top: 0, left: 0, bottom: 40, right: 0)
+        // 右のスクロールバーが見切れないように設定
+        talkTable.scrollIndicatorInsets = .init(top: 0, left: 0, bottom: 40, right: 0)
         fetchMessages()
     }
     
@@ -90,7 +94,7 @@ class TalkViewController: UIViewController {
         
         // addSnapshotLitenerでデータを取得する
         db.collection(K.FStore.collectionName_ChatRooms)
-            .document(chatroomDocId).collection(K.FStore.collectionName_Messages)
+            .document(chatroomDocId).collection(K.FStore.collectionName_Messages).order(by: K.FStore.Messages.createdAt)
             .addSnapshotListener { querySnapthot, error in
                 if let e = error {
                     print("コレクション'messages'からメッセージの情報の取得に失敗：\(e)")
@@ -114,24 +118,20 @@ class TalkViewController: UIViewController {
                             var generatedMessage = Message(dictionary: messageDic)
                             generatedMessage.partnerUser = self.chatRoom?.partnerUer
                             self.messages.append(generatedMessage)
-                            // Cellを時間を基準に並び替える
-                            self.messages.sort { message_1, message_2 in
-                                let m1Date = message_1.createdAt.dateValue()
-                                let m2Date = message_2.createdAt.dateValue()
-                                return m1Date < m2Date
-                            }
+
                             DispatchQueue.main.async {
                                 self.talkTable.reloadData()
+                                // 最新のメッセージCellまでスクロール
+                                self.talkTable.scrollToRow(at: IndexPath(row: self.messages.count - 1, section: 0), at: .bottom, animated: true)
                             }
+                            
                         case .modified, .removed:
                             print("documentChangesのtypeが.modified or .removed")
                         }
                     }
                 }
             }
-        
     }
-    
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
