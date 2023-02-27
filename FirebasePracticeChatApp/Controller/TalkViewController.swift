@@ -114,6 +114,12 @@ class TalkViewController: UIViewController {
                             var generatedMessage = Message(dictionary: messageDic)
                             generatedMessage.partnerUser = self.chatRoom?.partnerUer
                             self.messages.append(generatedMessage)
+                            // Cellを時間を基準に並び替える
+                            self.messages.sort { message_1, message_2 in
+                                let m1Date = message_1.createdAt.dateValue()
+                                let m2Date = message_2.createdAt.dateValue()
+                                return m1Date < m2Date
+                            }
                             DispatchQueue.main.async {
                                 self.talkTable.reloadData()
                             }
