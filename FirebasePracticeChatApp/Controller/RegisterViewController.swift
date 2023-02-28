@@ -51,8 +51,7 @@ class RegisterViewController: UIViewController {
     /// Storageへの画像ファイルのアップロード、Authでのユーザー新規登録、Firestoreへのユーザー新規の保存
     @IBAction private func registerPressed(_ sender: UIButton) {
         uploadImageToStorage()
-        // ChatListTableVCへの画面遷移
-        self.performSegue(withIdentifier: K.SegueIdentifier.registerToChat, sender: self)
+        
     }
     
     /// Authを使って、新規ユーザーを作成
@@ -89,6 +88,10 @@ class RegisterViewController: UIViewController {
                         return
                     } else {
                         print("データの追加に成功 Document successfully written")
+                        // ChatListTableVCへの画面遷移
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: K.SegueIdentifier.registerToChat, sender: self)
+                        }
                     }
                 }
             }
